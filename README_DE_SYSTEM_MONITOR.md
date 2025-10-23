@@ -40,12 +40,19 @@ Dieses Programm zeigt die Systemressourcen deines MacBook M1 auf dem TFT-Bildsch
 ### 1. Python-Umgebung einrichten
 
 ```bash
-# Führe das Setup-Script aus
-./setup.sh
+# Installations-Script ausführen (empfohlen)
+./install_service.sh
 
 # Oder manuell:
 pip3 install -r requirements.txt
 ```
+
+**Das Installations-Script wird:**
+- ✅ Python-Abhängigkeiten prüfen und installieren
+- ✅ Notwendige Verzeichnisse erstellen
+- ✅ Ausführbare Berechtigungen setzen
+- ✅ ESP32-Verbindung testen
+- ✅ Benutzungsanweisungen bereitstellen
 
 ### 2. ESP32-Programm hochladen
 
@@ -57,9 +64,70 @@ pip3 install -r requirements.txt
 
 ### 3. System-Monitor starten
 
+**Option A: Interaktiver Modus (Standard)**
 ```bash
 python3 mac_system_monitor.py
 ```
+
+**Option B: Hintergrund-Service (Empfohlen)**
+```bash
+# Mit einfachem Hintergrund-Script
+./run_background.sh start
+
+# Oder mit macOS Launch Agent (Auto-Start bei Login)
+./service_manager.sh install
+./service_manager.sh start
+```
+
+## Service-Management
+
+Der System-Monitor kann als Hintergrund-Service für kontinuierlichen Betrieb laufen:
+
+### Mit Launch Agent (macOS Service)
+```bash
+# Service installieren und starten
+./service_manager.sh install
+./service_manager.sh start
+
+# Status prüfen
+./service_manager.sh status
+
+# Logs anzeigen
+./service_manager.sh logs
+
+# Service stoppen
+./service_manager.sh stop
+```
+
+### Mit Hintergrund-Script (Einfach)
+```bash
+# Im Hintergrund starten
+./run_background.sh start
+
+# Status prüfen
+./run_background.sh status
+
+# Logs anzeigen
+./run_background.sh logs
+
+# Hintergrund-Prozess stoppen
+./stop_background.sh
+```
+
+### Manueller Hintergrund-Betrieb
+```bash
+# Im Hintergrund mit nohup ausführen
+nohup python3 mac_system_monitor.py --daemon > system_monitor.log 2>&1 &
+
+# Oder mit macOS Hintergrund-Funktion
+python3 mac_system_monitor.py --daemon &
+```
+
+**Features:**
+- ✅ Automatische Fehlerbehebung und Wiederverbindung
+- ✅ Logging in `~/Library/Logs/ESP32SystemMonitor/`
+- ✅ Auto-Start beim System-Login (Launch Agent)
+- ✅ Sauberes Herunterfahren und Aufräumen
 
 ## Funktionsweise
 
@@ -161,6 +229,8 @@ pip3 install --upgrade psutil pyserial
 - **Baudrate**: 115200 (Standard)
 - **Display**: 240x320 TFT mit ILI9341 Controller auf ESP32 TTGO T-Display V1.1 Board
 - **Python-Module**: psutil, pyserial
+- **Daemon-Unterstützung**: Hintergrundbetrieb mit Logging und Auto-Restart
+- **Fehlerbehebung**: Automatische Wiederverbindung und Retry-Mechanismen
 
 ## Erweiterte Features
 

@@ -40,12 +40,19 @@ This program displays your MacBook M1 system resources on the TFT display of an 
 ### 1. Set up Python environment
 
 ```bash
-# Run the setup script
-./setup.sh
+# Run the installation script (recommended)
+./install_service.sh
 
 # Or manually:
 pip3 install -r requirements.txt
 ```
+
+**The installation script will:**
+- ✅ Check and install Python dependencies
+- ✅ Create necessary directories
+- ✅ Set executable permissions
+- ✅ Test ESP32 connection
+- ✅ Provide usage instructions
 
 ### 2. Upload ESP32 program
 
@@ -57,9 +64,70 @@ pip3 install -r requirements.txt
 
 ### 3. Start System Monitor
 
+**Option A: Interactive Mode (Default)**
 ```bash
 python3 mac_system_monitor.py
 ```
+
+**Option B: Background Service (Recommended)**
+```bash
+# Using simple background script
+./run_background.sh start
+
+# Or using macOS Launch Agent (auto-start on login)
+./service_manager.sh install
+./service_manager.sh start
+```
+
+## Service Management
+
+The system monitor can run as a background service for continuous operation:
+
+### Using Launch Agent (macOS Service)
+```bash
+# Install and start service
+./service_manager.sh install
+./service_manager.sh start
+
+# Check status
+./service_manager.sh status
+
+# View logs
+./service_manager.sh logs
+
+# Stop service
+./service_manager.sh stop
+```
+
+### Using Background Script (Simple)
+```bash
+# Start in background
+./run_background.sh start
+
+# Check status
+./run_background.sh status
+
+# View logs
+./run_background.sh logs
+
+# Stop background process
+./stop_background.sh
+```
+
+### Manual Background Operation
+```bash
+# Run in background with nohup
+nohup python3 mac_system_monitor.py --daemon > system_monitor.log 2>&1 &
+
+# Or using macOS built-in background
+python3 mac_system_monitor.py --daemon &
+```
+
+**Features:**
+- ✅ Automatic error recovery and reconnection
+- ✅ Logging to `~/Library/Logs/ESP32SystemMonitor/`
+- ✅ Auto-start on system login (Launch Agent)
+- ✅ Graceful shutdown and cleanup
 
 ## How it Works
 
@@ -161,6 +229,8 @@ pip3 install --upgrade psutil pyserial
 - **Baud rate**: 115200 (standard)
 - **Display**: 240x320 TFT with ILI9341 controller on ESP32 TTGO T-Display V1.1 Board
 - **Python modules**: psutil, pyserial
+- **Daemon support**: Background operation with logging and auto-restart
+- **Error recovery**: Automatic reconnection and retry mechanisms
 
 ## Advanced Features
 
