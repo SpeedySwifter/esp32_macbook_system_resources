@@ -1,7 +1,7 @@
 #!/bin/bash
-# Setup script for Mac System Monitor
+# Setup script for Mac System Monitor on ESP32 TTGO T-Display V1.1 Board
 
-echo "=== Mac System Monitor Setup ==="
+echo "=== Mac System Monitor Setup for ESP32 TTGO T-Display V1.1 Board ==="
 echo ""
 
 # Check if Python 3 is installed
@@ -24,10 +24,13 @@ else
     exit 1
 fi
 
-# Check if ESP32 is connected
+# Check if ESP32 TTGO T-Display V1.1 Board is connected
 echo ""
-echo "Checking for ESP32 connection..."
-echo "Make sure your ESP32 is connected via USB and running the esp32_system_monitor.cpp program"
+echo "Checking for ESP32 TTGO T-Display V1.1 Board connection..."
+echo "Make sure your ESP32 TTGO T-Display V1.1 Board is connected via USB and running the esp32_system_monitor.cpp program"
+echo ""
+echo "For driver issues or detailed setup instructions, visit:"
+echo "https://github.com/Xinyuan-LilyGO/TTGO-T-Display"
 echo ""
 
 # Show usage instructions

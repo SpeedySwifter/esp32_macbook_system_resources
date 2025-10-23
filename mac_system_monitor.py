@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Mac System Monitor for ESP32 TFT Display
-Sends CPU, memory, and disk usage data to ESP32 via serial connection
+Mac System Monitor for ESP32 TTGO T-Display V1.1 Board
+Sends CPU, memory, and disk usage data to ESP32 TTGO T-Display V1.1 Board via serial connection
 """
 
 import psutil
@@ -97,8 +97,8 @@ def find_esp32_port():
     return '/dev/ttyUSB0'  # Default fallback
 
 def main():
-    """Main monitoring loop"""
-    print("Mac System Monitor for ESP32 TFT Display")
+    """Main monitoring loop for ESP32 TTGO T-Display V1.1 Board"""
+    print("Mac System Monitor for ESP32 TTGO T-Display V1.1 Board")
     print("=" * 40)
 
     # Find ESP32 serial port
@@ -110,7 +110,7 @@ def main():
         with serial.Serial(serial_port, 115200, timeout=1) as ser:
             print("ESP32 connection test: OK")
     except:
-        print("Warning: Could not connect to ESP32. Make sure it's plugged in and the correct port is selected.")
+        print("Warning: Could not connect to ESP32 TTGO T-Display V1.1 Board. Make sure it's plugged in and the correct port is selected.")
         print("Continuing anyway...")
 
     print("Starting system monitoring. Press Ctrl+C to stop.\n")

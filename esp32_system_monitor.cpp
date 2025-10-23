@@ -1,5 +1,8 @@
-#include <TFT_eSPI.h>
-#include <ArduinoJson.h>
+/**
+ * Mac System Monitor for ESP32 TTGO T-Display V1.1 Board
+ * Displays system resource data received from Mac via serial connection
+ * Compatible with ESP32 TTGO T-Display V1.1 Board with integrated TFT display
+ */
 
 // Display setup
 TFT_eSPI tft = TFT_eSPI();
@@ -54,7 +57,7 @@ void setup() {
   showHeader();
   showWaitingMessage();
 
-  Serial.println("ESP32 System Monitor Ready");
+  Serial.println("ESP32 TTGO T-Display V1.1 Board System Monitor Ready");
   Serial.println("Waiting for data from Mac...");
 }
 
@@ -112,6 +115,7 @@ void showHeader() {
   tft.setTextColor(TEXT_COLOR, BACKGROUND_COLOR);
   tft.setTextSize(2);
   tft.drawString("MacBook M1 Monitor", 20, 5);
+  // tft.drawString("TTGO T-Display V1.1", 20, 25); // Optional subtitle
 
   // Timestamp
   tft.setTextSize(1);

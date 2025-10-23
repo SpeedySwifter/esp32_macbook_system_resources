@@ -1,3 +1,9 @@
+/**
+ * Mac System Monitor for ESP32 TTGO T-Display V1.1 Board
+ * Displays system resource data received from Mac via serial connection
+ * Compatible with ESP32 TTGO T-Display V1.1 Board with integrated TFT display
+ */
+
 #include <TFT_eSPI.h>
 #include <ArduinoJson.h>
 
@@ -54,7 +60,7 @@ void setup() {
   showHeader();
   showWaitingMessage();
 
-  Serial.println("ESP32 System Monitor Ready");
+  Serial.println("ESP32 TTGO T-Display V1.1 Board System Monitor Ready");
   Serial.println("Waiting for data from Mac...");
 }
 

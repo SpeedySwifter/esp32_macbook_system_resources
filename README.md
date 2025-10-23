@@ -1,8 +1,12 @@
-# ESP32 Mac System Monitor
+# ESP32 TTGO T-Display V1.1 Board Mac System Monitor
 
-This program displays your MacBook M1 system resources on the TFT display of an ESP32. It monitors CPU, RAM, disk usage, and system load in real-time.
+This program displays your MacBook M1 system resources on the TFT display of an **ESP32 TTGO T-Display V1.1 Board**. It monitors CPU, RAM, disk usage, and system load in real-time.
+
+**Keywords:** ESP32, TTGO T-Display V1.1, Mac system monitor, TFT display, Arduino, system resources, CPU monitor, memory monitor, disk usage, MacBook M1, serial communication, JSON data
 
 ## Enhanced Display Features
+
+**Compatible with:** ESP32 TTGO T-Display V1.1 Board with 240x320 TFT display
 
 ### ✅ **Optimized Formatting**
 - **RAM**: 8.0/16.0GB (used/total)
@@ -19,9 +23,17 @@ This program displays your MacBook M1 system resources on the TFT display of an 
 
 ## Hardware Requirements
 
-- ESP32 Development Board with TFT display
-- USB connection between Mac and ESP32
+- **ESP32 TTGO T-Display V1.1 Board** with integrated TFT display
+- USB connection between Mac and ESP32 TTGO T-Display V1.1 Board
 - TFT_eSPI Library for Arduino IDE
+
+**Official Documentation:** For detailed specifications, pinouts, and driver information, visit the official [TTGO-T-Display repository](https://github.com/Xinyuan-LilyGO/TTGO-T-Display).
+
+### ESP32 TTGO T-Display V1.1 Pinout
+
+![ESP32 TTGO T-Display V1.1 Pinout](src/esp32_tft.jpeg)
+
+*Pin configuration and connections for the ESP32 TTGO T-Display V1.1 board*
 
 ## Software Setup
 
@@ -39,7 +51,9 @@ pip3 install -r requirements.txt
 
 1. Open `esp32_system_monitor.cpp` in the Arduino IDE
 2. Install the TFT_eSPI Library if not already present
-3. Compile and upload the program to your ESP32
+3. Compile and upload the program to your ESP32 TTGO T-Display V1.1 Board
+
+**Library Support:** For TFT_eSPI library setup and configuration specific to TTGO T-Display V1.1, visit the official [TTGO-T-Display repository](https://github.com/Xinyuan-LilyGO/TTGO-T-Display).
 
 ### 3. Start System Monitor
 
@@ -50,10 +64,14 @@ python3 mac_system_monitor.py
 ## How it Works
 
 1. **Python script** on Mac reads system information
-2. **Data transmission** via USB serial to ESP32
+2. **Data transmission** via USB serial to ESP32 TTGO T-Display V1.1 Board
 3. **TFT display** shows data in a clear format
 
 ## Display Layout
+
+![System Monitor Display Result](src/esp_tft_system_monitor.png)
+
+*Example of the final system monitor display showing CPU, RAM, disk usage and system load*
 
 ```
 MacBook M1 Monitor     Last Update: 14:30:25
@@ -103,7 +121,7 @@ tft.setRotation(1); // 0=Portrait, 1=Landscape, 2=Portrait 180°, 3=Landscape 18
 
 ## Troubleshooting
 
-### Problem: ESP32 not recognized
+### Problem: ESP32 TTGO T-Display V1.1 Board not recognized
 
 ```bash
 # Show available serial interfaces
@@ -114,9 +132,11 @@ python3 mac_system_monitor.py
 # Then manually specify the correct port
 ```
 
+**Driver Issues:** If you're having problems with USB drivers or board recognition, visit the official [TTGO-T-Display repository](https://github.com/Xinyuan-LilyGO/TTGO-T-Display) for driver downloads and troubleshooting guides.
+
 ### Problem: No data on TFT display
 
-- ✅ ESP32 program uploaded successfully?
+- ✅ ESP32 TTGO T-Display V1.1 Board program uploaded successfully?
 - ✅ USB connection stable?
 - ✅ Python script running without errors?
 - ✅ Serial Monitor shows received data?
@@ -125,7 +145,7 @@ python3 mac_system_monitor.py
 
 - ✅ Python script started?
 - ✅ Correct serial interface?
-- ✅ ESP32 connected via USB?
+- ✅ ESP32 TTGO T-Display V1.1 Board connected via USB?
 
 ### Problem: Missing Python dependencies
 
@@ -139,7 +159,7 @@ pip3 install --upgrade psutil pyserial
 - **Data format**: JSON over serial connection
 - **Update rate**: 2 seconds (configurable)
 - **Baud rate**: 115200 (standard)
-- **Display**: 240x320 TFT with ILI9341 controller
+- **Display**: 240x320 TFT with ILI9341 controller on ESP32 TTGO T-Display V1.1 Board
 - **Python modules**: psutil, pyserial
 
 ## Advanced Features
@@ -162,9 +182,11 @@ Even under high system load, all values are displayed correctly. The Python scri
 ## Support
 
 If you have problems:
-1. Enable Serial Monitor (ESP32)
+1. Enable Serial Monitor in Arduino IDE for ESP32 TTGO T-Display V1.1 Board
 2. Check Python script outputs
 3. Test USB connection
 4. Use Arduino IDE debug mode
 
-Have fun with your Mac System Monitor! 🎉
+**Additional Resources:** For hardware-specific issues, driver problems, or detailed specifications, visit the official [TTGO-T-Display repository](https://github.com/Xinyuan-LilyGO/TTGO-T-Display).
+
+Have fun with your Mac System Monitor on ESP32 TTGO T-Display V1.1 Board! 🎉
